@@ -8,7 +8,7 @@
 #The -n option shows what would happen. Run again without it to perform the mirror. Periodically run:
 #/usr/bin/python -tt /var/opt/scripts/mediamirror.py -s /var/opt/source/ -d /var/opt/dest --prune | tee -a /var/opt/source//mediamirror.log
 
-FROM alpine:latest
+FROM alpine:3.9
 
 ADD *.py /var/opt/scripts/
 
