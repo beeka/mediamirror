@@ -1,7 +1,10 @@
 Build the image with:
 
-cd C:\Users\Steven\Documents\docker\mediamirror
-docker build -t mediamirror .
+	docker build -t mediamirror .
+
+A quick sanity check:
+
+	docker run --rm mediamirror
 
 Then one of:
 
@@ -19,3 +22,8 @@ scripts are in /var/opt/scripts but also on the path, so python -tt /var/opt/scr
 
 #docker build -t mediamirror .
 #docker run -d --name container_name image_name
+
+
+Run a shell to debug:
+
+	docker run -it --rm --entrypoint /bin/ash mediamirror

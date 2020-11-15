@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 import shutil
 import sys
@@ -36,7 +36,7 @@ def create_directory_for_file(dest):
 					os.chdir(destdir)
 					os.chdir(cwd)
 				else:
-					os.makedirs(destdir, mode=0775)
+					os.makedirs(destdir, mode=0o775)
 			except:
 				# give the file system / network a couple of seconds to recognise the new directory
 				time.sleep(2)
@@ -86,11 +86,11 @@ def copy_playlist(source, dest):
 	dest = open(dest, "w")
 	for line in src:
 		line = line.strip()
-		for ext in conversions.keys():
+		for ext in list(conversions.keys()):
 			if line.endswith(ext):
 				(dest_ext, convert_fn) = conversions[ext]
 				line = line.replace(source_root, dest_root)[:-len(ext)] + dest_ext
-		print >>dest, line
+		print(line, file=dest)
 
 
 #
@@ -148,7 +148,7 @@ def update_single_dir(directory):
 	filenames.sort()
 
 	# find all media files we are interested in
-	for ext in conversions.keys():
+	for ext in list(conversions.keys()):
 		(dest_ext, convert_fn) = conversions[ext]
 		for filename in filenames:
 			if not filename.endswith(ext):

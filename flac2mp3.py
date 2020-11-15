@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Set up logging
 import logging
@@ -25,52 +25,52 @@ def one_to_one_conversion_txxx(flac_frame_name, desc):
     return (flac_frame_name, lambda mp3, flac: mp3.text[0] == flac, lambda str:[TXXX(encoding=3, desc=desc, text=str)])
 
 mp3_flac_dict = {
-    'TDRC':                             (u'$DATE', lambda mp3, flac: mp3.text[0].text == flac, lambda str: [TDRC(encoding=3, text=str)]),
-    'UFID:http://musicbrainz.org':      (u'$MUSICBRAINZ_TRACKID', lambda mp3, flac: mp3.data == flac, lambda str: [UFID(encoding=3, owner=u'http://musicbrainz.org', data=str)]),
-    'TALB':                             one_to_one_conversion(u'$ALBUM', TALB),
-    'TPE1':                             one_to_one_conversion(u'$ARTIST', TPE1),
-    'TPE2':                             one_to_one_conversion(u'$BAND', TPE2),
-    'TBPM':                             one_to_one_conversion(u'$BPM', TBPM),
-    'COMM':                             one_to_one_conversion(u'$COMMENT', COMM),
-    'TCMP':                             one_to_one_conversion(u'$COMPILATION', TCMP),
-    'TCOM':                             one_to_one_conversion(u'$COMPOSER', TCOM),
-    'TPE3':                             one_to_one_conversion(u'$CONDUCTOR', TPE3),
-    'TPOS':                             one_to_one_conversion(u'$DISCNUMBER/$TOTALDISCS', TPOS),
-    'TCON':                             one_to_one_conversion(u'$GENRE', TCON),
-    'TSRC':                             one_to_one_conversion(u'$ISRC', TSRC),
-    'TEXT':                             one_to_one_conversion(u'$LYRICIST', TEXT),
-    'TPUB':                             one_to_one_conversion(u'$PUBLISHER', TPUB),
-    'TIT2':                             one_to_one_conversion(u'$TITLE', TIT2),
-    'TRCK':                             one_to_one_conversion(u'$TRACKNUMBER/$TOTALTRACKS', TRCK),
-    'TSOP':                             one_to_one_conversion(u'$ARTISTSORT', TSOP),
-    'TSO2':                             one_to_one_conversion(u'$ALBUMARTISTSORT', TSO2),
-    'TSOT':                             one_to_one_conversion(u'$TITLESORT', TSOT),
-    'TSOA':                             one_to_one_conversion(u'$ALBUMSORT', TSOA),
-    'TXXX:MusicBrainz Album Id':        one_to_one_conversion_txxx(u'$MUSICBRAINZ_ALBUMID', 'MusicBrainz Album Id'),
-    'TXXX:MusicBrainz Album Status':    one_to_one_conversion_txxx(u'$MUSICBRAINZ_ALBUMSTATUS', 'MusicBrainz Album Status'),
-    'TXXX:MusicBrainz Album Artist Id': one_to_one_conversion_txxx(u'$MUSICBRAINZ_ALBUMARTISTID', 'MusicBrainz Album Artist Id'),
-    'TXXX:MusicBrainz Album Type':      one_to_one_conversion_txxx(u'$MUSICBRAINZ_ALBUMTYPE', 'MusicBrainz Album Type'),
-    'TXXX:MusicBrainz Artist Id':       one_to_one_conversion_txxx(u'$MUSICBRAINZ_ARTISTID', 'MusicBrainz Artist Id'),
-    'TXXX:MusicBrainz Sortname':        one_to_one_conversion_txxx(u'$MUSICBRAINZ_SORTNAME', 'MusicBrainz Sortname'),
-    'TXXX:MusicBrainz TRM Id':          one_to_one_conversion_txxx(u'$MUSICBRAINZ_TRMID', 'MusicBrainz TRM Id'),
-    'TXXX:MD5':                         one_to_one_conversion_txxx(u'$MD5', 'MD5'),
-    'TXXX:ALBUMARTISTSORT':             one_to_one_conversion_txxx(u'$ALBUMARTISTSORT', 'ALBUMARTISTSORT'),
+    'TDRC':                             ('$DATE', lambda mp3, flac: mp3.text[0].text == flac, lambda str: [TDRC(encoding=3, text=str)]),
+    'UFID:http://musicbrainz.org':      ('$MUSICBRAINZ_TRACKID', lambda mp3, flac: mp3.data == flac, lambda str: [UFID(encoding=3, owner='http://musicbrainz.org', data=str)]),
+    'TALB':                             one_to_one_conversion('$ALBUM', TALB),
+    'TPE1':                             one_to_one_conversion('$ARTIST', TPE1),
+    'TPE2':                             one_to_one_conversion('$BAND', TPE2),
+    'TBPM':                             one_to_one_conversion('$BPM', TBPM),
+    'COMM':                             one_to_one_conversion('$COMMENT', COMM),
+    'TCMP':                             one_to_one_conversion('$COMPILATION', TCMP),
+    'TCOM':                             one_to_one_conversion('$COMPOSER', TCOM),
+    'TPE3':                             one_to_one_conversion('$CONDUCTOR', TPE3),
+    'TPOS':                             one_to_one_conversion('$DISCNUMBER/$TOTALDISCS', TPOS),
+    'TCON':                             one_to_one_conversion('$GENRE', TCON),
+    'TSRC':                             one_to_one_conversion('$ISRC', TSRC),
+    'TEXT':                             one_to_one_conversion('$LYRICIST', TEXT),
+    'TPUB':                             one_to_one_conversion('$PUBLISHER', TPUB),
+    'TIT2':                             one_to_one_conversion('$TITLE', TIT2),
+    'TRCK':                             one_to_one_conversion('$TRACKNUMBER/$TOTALTRACKS', TRCK),
+    'TSOP':                             one_to_one_conversion('$ARTISTSORT', TSOP),
+    'TSO2':                             one_to_one_conversion('$ALBUMARTISTSORT', TSO2),
+    'TSOT':                             one_to_one_conversion('$TITLESORT', TSOT),
+    'TSOA':                             one_to_one_conversion('$ALBUMSORT', TSOA),
+    'TXXX:MusicBrainz Album Id':        one_to_one_conversion_txxx('$MUSICBRAINZ_ALBUMID', 'MusicBrainz Album Id'),
+    'TXXX:MusicBrainz Album Status':    one_to_one_conversion_txxx('$MUSICBRAINZ_ALBUMSTATUS', 'MusicBrainz Album Status'),
+    'TXXX:MusicBrainz Album Artist Id': one_to_one_conversion_txxx('$MUSICBRAINZ_ALBUMARTISTID', 'MusicBrainz Album Artist Id'),
+    'TXXX:MusicBrainz Album Type':      one_to_one_conversion_txxx('$MUSICBRAINZ_ALBUMTYPE', 'MusicBrainz Album Type'),
+    'TXXX:MusicBrainz Artist Id':       one_to_one_conversion_txxx('$MUSICBRAINZ_ARTISTID', 'MusicBrainz Artist Id'),
+    'TXXX:MusicBrainz Sortname':        one_to_one_conversion_txxx('$MUSICBRAINZ_SORTNAME', 'MusicBrainz Sortname'),
+    'TXXX:MusicBrainz TRM Id':          one_to_one_conversion_txxx('$MUSICBRAINZ_TRMID', 'MusicBrainz TRM Id'),
+    'TXXX:MD5':                         one_to_one_conversion_txxx('$MD5', 'MD5'),
+    'TXXX:ALBUMARTISTSORT':             one_to_one_conversion_txxx('$ALBUMARTISTSORT', 'ALBUMARTISTSORT'),
 }
 
 status_printed=False
 
 def flac_tag_dict(flac):
     ret = {}
-    for key in flac.tags.as_dict().keys():
+    for key in list(flac.tags.as_dict().keys()):
         ret[key.upper()] = flac.tags[key][0]
     ret['MD5'] = ('%x' % flac.info.md5_signature)
-    if ret.has_key('TRACKTOTAL'):
+    if 'TRACKTOTAL' in ret:
         ret['TOTALTRACKS'] = ret['TRACKTOTAL']
-    if ret.has_key('DISCTOTAL'):
+    if 'DISCTOTAL' in ret:
         ret['TOTALDISCS'] = ret['DISCTOTAL']
-    if not ret.has_key('TOTALTRACKS'):
+    if 'TOTALTRACKS' not in ret:
         ret['TOTALTRACKS'] = ''
-    if not ret.has_key('TOTALDISCS'):
+    if 'TOTALDISCS' not in ret:
         ret['TOTALDISCS'] = ''
     return ret
 
@@ -93,7 +93,7 @@ def encode_file(flac_name, mp3_name):
 def print_status(file_name, pos, status):
     global status_printed
     if not status_printed:
-        print file_name
+        print(file_name)
         for i in range(pos):
             sys.stdout.write(" ")
         status_printed = True
@@ -133,7 +133,7 @@ def tag_sync(flac_name, mp3_name):
     tag_index = 1
 
     # First, check whether the tags that can easily be translated match:
-    for frame in mp3_flac_dict.keys():
+    for frame in list(mp3_flac_dict.keys()):
         mp3_has_frame = True
         flac_has_frame = True
         frames_differ = False
@@ -174,19 +174,19 @@ def tag_sync(flac_name, mp3_name):
             if apic.mime == picture.mime and apic.type == picture.type and apic.data == picture.data:
                 have_picture = True
         if not have_picture:
-            if not tag_differences.has_key('APIC:'):
+            if 'APIC:' not in tag_differences:
                 tag_differences['APIC:'] = []
-            tag_differences['APIC:'].append(APIC(encoding=3, desc=u'', type=picture.type, data=picture.data, mime=picture.mime))
+            tag_differences['APIC:'].append(APIC(encoding=3, desc='', type=picture.type, data=picture.data, mime=picture.mime))
             print_status(mp3_name, tag_index, "P")
-    print ""
+    print("")
     # And now push the changed tags to the MP3.
-    for frame in tag_differences.keys():
+    for frame in list(tag_differences.keys()):
         if tag_differences[frame] == None:
             mp3.delall(frame)
         else:
             mp3.setall(frame, tag_differences[frame])
 
-    if len(tag_differences.keys()) > 0:
+    if len(list(tag_differences.keys())) > 0:
         mp3.save(mp3_name, v1=1)
     else:
         os.utime(mp3_name, None)
