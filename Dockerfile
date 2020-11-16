@@ -11,7 +11,7 @@ WORKDIR /var/opt/source
 
 VOLUME [ "/var/opt/source", "/var/opt/dest"  ]
 
-ENTRYPOINT [ "/usr/bin/python", "-tt", "/var/opt/scripts/mediamirror.py", "-s", "/var/opt/source/", "-d", "/var/opt/dest" ]
+ENTRYPOINT [ "/usr/bin/python3", "-tt", "/var/opt/scripts/mediamirror.py", "-s", "/var/opt/source/", "-d", "/var/opt/dest/" ]
 
 # Default to pruning dead directories after the mirror
 CMD [ "--prune" ]
