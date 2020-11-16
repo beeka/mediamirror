@@ -169,7 +169,7 @@ def update_single_dir(directory):
 		mirrored |= get_path_hierachy(dest_directory)
 
 # Exclude .@__thumb
-excluded_paths = [ ".@__thumb", "_fresh", "_vortexbox" ]
+excluded_paths = [ ".@__thumb", "_fresh" ]
 
 def isWanted(path):
 	for pattern in excluded_paths:
