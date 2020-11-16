@@ -256,6 +256,11 @@ def main():
 	if dest_root == None:
 		parser.error("Destination root must be specified.")
 
+	# The path mangling doesn't work well if path separator is missing
+	if source_root[-1:] != os.sep:
+		source_root = source_root + os.sep
+	if dest_root[-1:] != os.sep:
+			dest_root = dest_root + os.sep
 
 	#
 	# Check all directories that lie under the source root
