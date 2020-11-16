@@ -2,7 +2,7 @@ FROM alpine:latest
 
 ADD *.py /var/opt/scripts/
 
-RUN apk add --no-cache bash python3 py-mutagen flac lame && \
+RUN apk add --no-cache python3 py-mutagen flac lame && \
     rm -fr /var/cache/apk/*
 
 ENV PATH=${PATH}:/var/opt/scripts/
