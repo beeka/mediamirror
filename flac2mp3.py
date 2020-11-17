@@ -53,7 +53,7 @@ mp3_flac_dict = {
     'TXXX:MusicBrainz Album Type':      one_to_one_conversion_txxx('$MUSICBRAINZ_ALBUMTYPE', 'MusicBrainz Album Type'),
     'TXXX:MusicBrainz Artist Id':       one_to_one_conversion_txxx('$MUSICBRAINZ_ARTISTID', 'MusicBrainz Artist Id'),
     'TXXX:MusicBrainz Release Group Id': one_to_one_conversion_txxx('$MUSICBRAINZ_RELEASEGROUPID', 'MusicBrainz Release Group Id'),
-    'TXXX:MusicBrainz Release Track Id': one_to_one_conversion_txxx('$MUSICBRAINZ_RELEASETRACKID', 'MusicBrainz Track Id'),
+    'TXXX:MusicBrainz Release Track Id': one_to_one_conversion_txxx('$MUSICBRAINZ_RELEASETRACKID', 'MusicBrainz Release Track Id'),
     'TXXX:MusicBrainz Sortname':        one_to_one_conversion_txxx('$MUSICBRAINZ_SORTNAME', 'MusicBrainz Sortname'),
     'TXXX:MusicBrainz TRM Id':          one_to_one_conversion_txxx('$MUSICBRAINZ_TRMID', 'MusicBrainz TRM Id'),
     'TXXX:MD5':                         one_to_one_conversion_txxx('$MD5', 'MD5'),
