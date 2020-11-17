@@ -24,12 +24,13 @@ def one_to_one_conversion(flac_frame_name, frame_class):
 def one_to_one_conversion_txxx(flac_frame_name, desc):
     return (flac_frame_name, lambda mp3, flac: mp3.text[0] == flac, lambda str:[TXXX(encoding=3, desc=desc, text=str)])
 
+# Check http://picard-docs.musicbrainz.org/en/technical/tag_mapping.html for mappings used by Picard
 mp3_flac_dict = {
-    'TDRC':                             ('$DATE', lambda mp3, flac: mp3.text[0].text == flac, lambda str: [TDRC(encoding=3, text=str)]),
-    'UFID:http://musicbrainz.org':      ('$MUSICBRAINZ_TRACKID', lambda mp3, flac: mp3.data == flac, lambda str: [UFID(encoding=3, owner='http://musicbrainz.org', data=str)]),
+    'TDRC':                             ('$DATE', lambda mp3, flac: mp3.text[0].text == flac, lambda value: [TDRC(encoding=3, text=value)]),
+    'UFID:http://musicbrainz.org':      ('$MUSICBRAINZ_TRACKID', lambda mp3, flac: mp3.data.decode('ascii') == flac, lambda value: [UFID(encoding=3, owner='http://musicbrainz.org', data=value.encode('ascii'))]),
     'TALB':                             one_to_one_conversion('$ALBUM', TALB),
     'TPE1':                             one_to_one_conversion('$ARTIST', TPE1),
-    'TPE2':                             one_to_one_conversion('$BAND', TPE2),
+    'TPE2':                             one_to_one_conversion('$ALBUMARTIST', TPE2),
     'TBPM':                             one_to_one_conversion('$BPM', TBPM),
     'COMM':                             one_to_one_conversion('$COMMENT', COMM),
     'TCMP':                             one_to_one_conversion('$COMPILATION', TCMP),
@@ -51,6 +52,8 @@ mp3_flac_dict = {
     'TXXX:MusicBrainz Album Artist Id': one_to_one_conversion_txxx('$MUSICBRAINZ_ALBUMARTISTID', 'MusicBrainz Album Artist Id'),
     'TXXX:MusicBrainz Album Type':      one_to_one_conversion_txxx('$MUSICBRAINZ_ALBUMTYPE', 'MusicBrainz Album Type'),
     'TXXX:MusicBrainz Artist Id':       one_to_one_conversion_txxx('$MUSICBRAINZ_ARTISTID', 'MusicBrainz Artist Id'),
+    'TXXX:MusicBrainz Release Group Id': one_to_one_conversion_txxx('$MUSICBRAINZ_RELEASEGROUPID', 'MusicBrainz Release Group Id'),
+    'TXXX:MusicBrainz Release Track Id': one_to_one_conversion_txxx('$MUSICBRAINZ_RELEASETRACKID', 'MusicBrainz Track Id'),
     'TXXX:MusicBrainz Sortname':        one_to_one_conversion_txxx('$MUSICBRAINZ_SORTNAME', 'MusicBrainz Sortname'),
     'TXXX:MusicBrainz TRM Id':          one_to_one_conversion_txxx('$MUSICBRAINZ_TRMID', 'MusicBrainz TRM Id'),
     'TXXX:MD5':                         one_to_one_conversion_txxx('$MD5', 'MD5'),
