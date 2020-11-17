@@ -132,7 +132,8 @@ def tag_sync(flac_name, mp3_name):
     flac = FLAC(flac_name)
 
     flactags = flac_tag_dict(flac)
-    log.debug("Source tags are: %s", flactags)
+    log.debug("Source tags present: %s", '; '.join(sorted(flactags.keys())))
+    log.debug("Destination tags present: %s", '; '.join(sorted(mp3.keys())))
     tag_differences = {}
     tag_index = 1
 
