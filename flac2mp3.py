@@ -132,6 +132,7 @@ def tag_sync(flac_name, mp3_name):
     flac = FLAC(flac_name)
 
     flactags = flac_tag_dict(flac)
+    log.debug("Source tags are: %s", flactags)
     tag_differences = {}
     tag_index = 1
 
@@ -159,7 +160,7 @@ def tag_sync(flac_name, mp3_name):
             frames_differ = not comparator(mp3_value, flac_value)
 
         if (flac_has_frame and not mp3_has_frame) or frames_differ:
-            #print "%s differs: %s <> %s" % (frame, mp3_value, flac_value)
+            log.debug("%s differs: %s <> %s", frame, flac_value, mp3_value)
             tag_differences[frame] = id3_generator(flac_value)
             print_status(mp3_name, tag_index, ".")
         elif not flac_has_frame and mp3_has_frame:
